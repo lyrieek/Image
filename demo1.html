@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>天浩913</title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0; 
+			}
+			body{
+				overflow: hidden;
+			}
+			ul{
+				list-style-type: none;
+				margin: 60px 120px;
+			} 
+			li>img{ 
+				width: 128px;
+				height: 128px;
+				padding: 0;
+				margin: 0;    
+				display: list-item;
+    			text-align: left;
+    			position: absolute;
+    			left: 0;
+    			top: 0;
+			}
+			#val{
+				position: absolute;
+				top:70%;
+				left:10%;
+			} 
+		</style> 
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/th-1.0.js" ></script>
+		<script type="text/javascript">
+			var f={
+				l:0,
+				t:0,
+				r:0
+			},u={
+				l:0,
+				t:0,
+				r:0
+			},r={
+				l:0,
+				t:0,
+				r:0
+			};
+			function load() {
+				$('#num').html(f.l);
+				$('input').attr('type','number').val('0');
+				var vi = $('#val input');
+				f.l = vi.eq(0).val();
+				f.t = vi.eq(1).val();
+				f.r = vi.eq(2).val();
+				u.l = vi.eq(3).val();
+				u.t = vi.eq(4).val();
+				u.r = vi.eq(5).val();
+				r.l = vi.eq(6).val();
+				r.t = vi.eq(7).val();
+				r.r = vi.eq(8).val();
+			}
+			
+			function showNum(){
+				var vi = $('#val input');
+				vi.eq(0).val(f.l);
+				vi.eq(1).val(f.t);
+				vi.eq(2).val(f.r);
+				vi.eq(3).val(u.l);
+				vi.eq(4).val(u.t);
+				vi.eq(5).val(u.r);
+				vi.eq(6).val(r.l);
+				vi.eq(7).val(r.t);
+				vi.eq(8).val(r.r);
+			}
+			
+			$(function(){
+				load();
+				
+				function changes() {
+					$('li>img').eq(0).css({
+						'left':u.l+'px',
+						'top':u.t+'px',
+						'height':64+'px'
+					}).skew(-52,0); 
+					$('li>img').eq(1).css({ 
+						'left':f.l+'px',
+						'top':f.t+'px'
+					});
+					$('li>img').eq(2).css({ 
+						'left':r.l+'px',
+						'top':r.t+'px'
+					}).skew(0,-24); 
+				};
+				
+				$('#val input').change(function () {
+					var elem = $(this);
+					switch (elem.index()){
+						case 0:
+							f.l = elem.val();
+							break;
+						case 1:
+							f.t =  elem.val();
+							break;
+						case 2:
+							f.r =  elem.val();
+							break;
+						case 3:
+							u.l =  elem.val();
+							break;
+						case 4:
+							u.t =  elem.val();
+							break;
+						case 5:
+							u.r =  elem.val();
+							break;
+						case 6:
+							r.l =  elem.val();
+							break;
+						case 7:
+							r.t =  elem.val();
+							break;
+						case 8:
+							r.r =  elem.val();
+							break;
+					}
+					changes();
+				});
+				
+				changes();
+				$('li>img').draw3D();
+				var ismove = false;
+				$('li>img').click(function () {
+					if (ismove) {
+						var $e = $(this);
+						$e.css('border','0px');
+						$('html').off('mousemove');
+						ismove = false;
+					}else{ 
+						var $e = $(this);
+						$e.css('border','solid red 1px');
+						$('html').mousemove(function (e) {
+							$e.css('left',e.pageX - (parseInt($e.css('width')) / 2) +'px');
+							$e.css('top',e.pageY - (parseInt($e.css('height')) / 2) +'px');
+							parseInt($e.css('left'));
+							$('title').html();
+						});
+						ismove = true;
+					}
+				});
+				/*
+				$('body').circles(12); */
+			});
+		</script>
+	</head>
+	<body>
+		<div id="context">
+			<div id="num"></div>
+			<ul>
+				<li><img src="img/0.jpg" /></li>
+				<li><img src="img/1.jpg" /></li>
+				<li><img src="img/2.jpg" /></li>
+			</ul>
+			<div id="val">
+				F:<input id="fl" /><input id="ft" /><input id="fr" /><br />
+				U:<input id="ul" /><input id="ut" /><input id="ur" /><br />
+				R:<input id="rl" /><input id="rt" /><input id="rr" /><br />
+			</div>
+			
+		</div>
+	</body>
+</html>

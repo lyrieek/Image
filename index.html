@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>天浩912</title>
+		<style type="text/css">
+			li{
+				list-style-type: none;
+			}
+			li>img{
+				display: none;
+				width: 128px;
+				height: 128px;
+			}
+			.action{
+				display: inherit;
+			}
+		</style> 
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/th-1.0.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				$('li>img').toggles('action',function (i) {
+					$('#num').html(i);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="context">
+			<div id="num"></div>
+			<ul>
+				<li><img src="img/0.jpg" /></li>
+				<li><img src="img/1.jpg" /></li>
+				<li><img src="img/2.jpg" /></li>
+				<li><img src="img/3.jpg" /></li>
+			</ul>
+			
+		</div>
+	</body>
+</html>

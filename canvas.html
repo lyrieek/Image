@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>-->
+		<script src="js/jquery-1.11.0.js"></script>
+		<style type="text/css">
+			html,body{
+				height: 100%;	
+			}
+			
+			#menu{
+				height: 30px;
+				
+			}
+		</style>
+		
+		<script type="text/javascript">
+			var img = new Image();
+			$(function() {
+				var canvas = $("#imgCanvas")[0];
+				var context = canvas.getContext('2d');
+				var loadImg = function(url) {
+					img.src = url;
+					img.onload = function() {
+						canvas.width = img.width;
+						canvas.height = img.height;
+						context.drawImage(img, 0, 0);
+					}
+				}
+				$('#src')[0].onchange = $('#src')[0].onkeyup = function(){
+					loadImg(this.value);
+				}
+				loadImg('img/1.jpg');
+				
+				//function
+				$("#border").change(function(event){
+					$("#imgCanvas").css('border',event.currentTarget.checked ? '5px solid #000' : '0px');
+				})
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="context" style="text-align: center;height: 100%;">
+			<nav id="menu">
+				<input type="text" name="src" id="src" value="img/1.jpg" />
+			</nav>
+			<ul id="leftList" style="float: left;">
+				<li>笔</li>
+			</ul>
+			<ul id="rightList" style="float: right;">
+				<li><input id="border" type="checkbox" /><b>边框</b></li>
+			</ul>
+			<div style="border:2px solid #000;width: 80%;margin-left: 10%;height: 80%;vertical-align: middle;">
+				<canvas id="imgCanvas">不支持canvas</canvas>
+			</div>
+
+		</div>
+	</body>
+
+</html>

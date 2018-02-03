@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>天浩913</title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0; 
+			}
+			body{
+				overflow: hidden;
+			}
+			ul{
+				list-style-type: none;
+				margin: 60px 120px;
+			} 
+			li>img{ 
+				width: 128px;
+				height: 128px;
+				padding: 0;
+				margin: 0;    
+				display: list-item;
+    			text-align: left;
+    			position: absolute;
+    			left: 0;
+    			top: 0;
+			}
+			#val{
+				position: absolute;
+				top:70%;
+				left:10%;
+			} 
+		</style> 
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="js/th-1.0.js" ></script>
+		<script type="text/javascript"> 
+			
+			$(function(){ 
+				$('li>img').setStyle('transform','rotatez(66deg)');  
+				$('body').circles(1);
+			});
+		</script>
+	</head>
+	<body>
+		<div id="context">
+			<div id="num"></div>
+			<ul>
+				<li><img src="img/0.jpg" /></li>
+				<li><img src="img/1.jpg" /></li>
+				<li><img src="img/2.jpg" /></li>
+			</ul> 
+			
+		</div>
+	</body>
+</html> 
