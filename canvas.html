@@ -33,7 +33,7 @@
 				}
 				$('#src')[0].onchange = $('#src')[0].onkeyup = function() {
 					loadImg(this.value);
-				} 
+				}
 				loadImg('img/1.jpg');
 
 				//function
@@ -80,8 +80,8 @@
 				$(".clearColor").change(function(event){
 					if(event.currentTarget.checked) {
 						imgFullFilter(function(pixelData){
-							for (var i = 0; i < canvas.width * canvas.height;i++) {
-								pixelData[i*4+parseInt(event.currentTarget.attributes['data-i'].value)] = 255;
+							for (var i = 0; i < canvas.width * canvas.height; i = i*4+1) {
+								pixelData[i+parseInt(event.currentTarget.attributes['data-i'].value)] = 255;
 							}
 						});
 					}else{
